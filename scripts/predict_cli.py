@@ -6,14 +6,18 @@ from pathlib import Path
 import sys
 import pandas as pd
 
-try:
-    from backend.src.model_io import load_model, MODEL_PATH
-    from backend.src.rules import rule_flags
-    from backend.src.preprocess import clean_text
-except Exception:
-    from src.model_io import load_model, MODEL_PATH
-    from src.rules import rule_flags
-    from src.preprocess import clean_text
+# --- Path bootstrap ---
+ROOT = Path(__file__).resolve().parents[1]
+BACKEND = ROOT / "backend"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+if str(BACKEND) not in sys.path:
+    sys.path.insert(0, str(BACKEND))
+# ----------------------
+
+from backend.src.model_io import load_model, MODEL_PATH
+from backend.src.rules import rule_flags
+from backend.src.preprocess import clean_text
 
 def score_text(model, text: str):
     cleaned = clean_text(text)

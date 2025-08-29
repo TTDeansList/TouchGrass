@@ -3,15 +3,20 @@
 Train the baseline TF-IDF + Logistic Regression model on processed data.
 """
 from pathlib import Path
+import sys
 import pandas as pd
 
-# Import training function from backend
-try:
-    from backend.src.train_sklearn import train_quality_baseline
-except Exception:
-    from src.train_sklearn import train_quality_baseline  # when running inside backend
-
+# --- Path bootstrap so "backend" is importable when run from repo root ---
 ROOT = Path(__file__).resolve().parents[1]
+BACKEND = ROOT / "backend"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+if str(BACKEND) not in sys.path:
+    sys.path.insert(0, str(BACKEND))
+# -------------------------------------------------------------------------
+
+from backend.src.train_sklearn import train_quality_baseline
+
 DATA_PROC = ROOT / "data" / "processed"
 
 def main():

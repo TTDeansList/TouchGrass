@@ -23,3 +23,10 @@ python scripts/evaluate.py
 # Run API
 uvicorn backend.src.main:app --reload
 # Visit http://127.0.0.1:8000/docs
+```
+
+## Testing
+``` bash
+# To Test via CLI:
+python scripts/predict_cli.py "I haven't been here but it looks terrible"s
+```

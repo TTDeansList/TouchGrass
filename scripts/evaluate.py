@@ -4,20 +4,23 @@ Evaluate the saved model on data/processed/test.csv and write a classification r
 """
 import json
 from pathlib import Path
+import sys
 import pandas as pd
 from sklearn.metrics import classification_report
 
-# Imports
-try:
-    from backend.src.model_io import load_model, MODEL_PATH
-    from backend.src.preprocess import clean_text
-    from backend.src.rules import rule_flags
-except Exception:
-    from src.model_io import load_model, MODEL_PATH
-    from src.preprocess import clean_text
-    from src.rules import rule_flags
-
+# --- Path bootstrap ---
 ROOT = Path(__file__).resolve().parents[1]
+BACKEND = ROOT / "backend"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+if str(BACKEND) not in sys.path:
+    sys.path.insert(0, str(BACKEND))
+# ----------------------
+
+from backend.src.model_io import load_model, MODEL_PATH
+from backend.src.preprocess import clean_text
+from backend.src.rules import rule_flags
+
 DATA_PROC = ROOT / "data" / "processed"
 
 def main():
