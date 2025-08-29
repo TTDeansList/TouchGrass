@@ -1,3 +1,12 @@
+# Data & models: ignore contents, keep folder + .gitkeep
+!data/
+data/*
+!data/.gitkeep
+
+!backend/models/
+backend/models/*
+!backend/models/.gitkeep
+
 # Python
 __pycache__/
 *.pyc
@@ -7,10 +16,6 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 .env
-
-# Data (ignore all raw/processed data files)
-data/
-backend/models/
 
 # Outputs & reports
 outputs/
