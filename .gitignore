@@ -8,18 +8,21 @@ __pycache__/
 .venv/
 .env
 
-# Data / models
-/backend/data/
-/backend/models/
-/outputs/
-/reports/
+# Data (ignore all raw/processed data files)
+data/
+backend/models/
+
+# Outputs & reports
+outputs/
+reports/
 
 # Node / frontend
-/node_modules/
-/frontend/node_modules/
+node_modules/
+frontend/node_modules/
 dist/
 *.log
+
+# OS/editor junk
 .DS_Store
 .vscode/
 .idea/
-EOF
