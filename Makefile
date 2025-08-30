@@ -21,3 +21,12 @@ api:
 
 test:
 	pytest -q
+
+
+# --- Offline model workflow ---
+prefetch-models:
+	python scripts/prefetch_models.py
+
+pseudo-label-offline:
+	TRANSFORMERS_OFFLINE=1 HF_DATASETS_OFFLINE=1 \
+	python scripts/pseudo_label_zeroshot.py --batch-size 8

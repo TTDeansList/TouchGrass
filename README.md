@@ -33,6 +33,22 @@ python scripts/evaluate.py
 
 ---
 
+## 🔒 Local-only labeling (no network)
+We prefetch models once, then force offline mode:
+```bash
+make prefetch-models   # downloads into backend/models/*
+make pseudo-label-offline  # runs zero-shot locally with RANSFORMERS_OFFLINE=1
+```
+Under the hood we use:
+- `huggingface_hub.snapshot_download` to store weights in `backend/models/*`
+- `TRANSFORMERS_OFFLINE=1` and `HF_DATASETS_OFFLINE=1` to disable network calls
+```
+ENV TRANSFORMERS_OFFLINE=1 HF_DATASETS_OFFLINE=1
+```
+Reference: Hugging Face offline mode and Hub download utilities.
+
+---
+
 ## Testing
 
 ### 🖥️ Streamlit Demo (UI)
